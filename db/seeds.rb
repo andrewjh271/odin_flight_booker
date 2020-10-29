@@ -5,3 +5,34 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+def random_takeoff
+  Faker::Time.between(from: 5.days.from_now, to: 7.days.from_now)
+end
+
+ActiveRecord::Base.transaction do
+  Flight.destroy_all
+  Airport.destroy_all
+
+  a1 = Airport.create(code: 'SAN', name: 'San Diego International Airport', city: 'San Diego')
+  a2 = Airport.create(code: 'DTW', name: 'Detroit Metropolitan Airport', city: 'Detroit')
+  a3 = Airport.create(code: 'JFK', name: 'John F Kennedy International Airport', city: 'New York')
+  # a4 = Airport.create(code: 'SFO', name: 'San Francisco International Airport', city: 'San Francisco')
+  # a5 = Airport.create(code: 'ORD', name: 'O\'hare International Airport', city: 'Chicago')
+  # a6 = Airport.create(code: 'SLC', name: 'Salt Lake City International Airport', city: 'Salt Lake City')
+  # a7 = Airport.create(code: 'DFW', name: 'Dallas / Fort Worth International Airport', city: 'Dallas')
+  # a8 = Airport.create(code: 'SEA', name: 'Seattle-Tacoma International Airport', city: 'Seattle')
+  # a9 = Airport.create(code: 'BOS', name: 'Logan International Airport', city: 'Boston')
+  # a10 = Airport.create(code: 'PIT', name: 'Pittsburgh International Airport', city: 'Pittsburgh')
+
+  f1 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a2, duration: 252)
+  f2 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a2, duration: 252)
+  f3 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a2, duration: 252)
+  f4 = Flight.create(takeoff: random_takeoff, origin: a2, destination: a1, duration: 252)
+  f5 = Flight.create(takeoff: random_takeoff, origin: a2, destination: a1, duration: 252)
+  f6 = Flight.create(takeoff: random_takeoff, origin: a3, destination: a1, duration: 304)
+  f7 = Flight.create(takeoff: random_takeoff, origin: a3, destination: a1, duration: 304)
+  f8 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a3, duration: 304)
+  f9 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a3, duration: 304)
+
+end
