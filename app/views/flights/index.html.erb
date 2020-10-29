@@ -1,0 +1,40 @@
+<h3>Flights</h3>
+
+<%= form_with(url: flights_path, scope: :flight, method: :get, local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label(:origin_id) %>
+    <%= form.select(:origin_id, options_from_collection_for_select(Airport.all, :id, :code)) %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:destination_id) %>
+    <%= form.select(:destination_id, options_from_collection_for_select(Airport.all, :id, :code)) %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:date) %>
+    <%= select_tag(:date, options_from_collection_for_select(Flight.find_by_sql('SELECT DISTINCT takeoff::date FROM flights'), :takeoff, :takeoff_formatted)) %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:passengers) %>
+    <%= select_tag(:passengers, options_for_select(1..4)) %>
+  </div>
+
+  <%= form.submit(:Search, class: 'important-button') %>
+
+<% end %>
+
+<br>
+<% if @flights %>
+  <% @flights.includes(:origin, :destination).each do |flight| %>
+    <div>
+      <li><%= flight.origin.code %></li>
+      <li><%= flight.destination.code %></li>
+      <li><%= flight.duration %></li>
+    </div>
+    <hr>
+  <% end %>
+<% end %>
+
