@@ -11,10 +11,13 @@
 #  updated_at     :datetime         not null
 #
 class Flight < ApplicationRecord
+  attr_accessor :date, :passengers
+
   belongs_to :origin, class_name: :Airport
   belongs_to :destination, class_name: :Airport
 
   def takeoff_formatted
     takeoff.strftime("%m/%d/%Y")
   end
+
 end
