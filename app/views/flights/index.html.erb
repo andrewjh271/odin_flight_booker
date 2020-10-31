@@ -1,6 +1,7 @@
 <h3>Flights</h3>
 
-<%= form_with(model: @flight, url: flights_path, method: :get, local: true) do |form| %>
+<%#= form_with(model: @flight, url: flights_path, method: :get, local: true) do |form| %>
+<%= simple_form_for(@flight, url: flights_path, method: :get, local: true) do |form| %>
 
   <div class="field">
     <%= form.label(:origin_id) %>
@@ -25,7 +26,8 @@
     <%= form.select(:passengers, 1..4) %>
   </div>
 
-  <%= form.submit(:Search, class: 'important-button') %>
+  <%#= form.submit(:Search, class: 'important-button') %>
+  <%= form.button :submit, 'Search' %>
 
 <% end %>
 
