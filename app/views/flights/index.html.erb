@@ -32,14 +32,6 @@
 <% end %>
 
 <br>
-<% if @flights %>
-  <% @flights.includes(:origin, :destination).each do |flight| %>
-    <div>
-      <li><%= flight.origin.code %></li>
-      <li><%= flight.destination.code %></li>
-      <li><%= flight.duration %></li>
-    </div>
-    <hr>
-  <% end %>
-<% end %>
+
+<%= render 'flights', flights: @flights %>
 
