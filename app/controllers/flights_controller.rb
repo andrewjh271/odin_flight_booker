@@ -3,7 +3,7 @@ class FlightsController < ApplicationController
     # fail
     @flight = params[:flight] ? Flight.new(search_params) : Flight.new
     if params[:flight]
-      @flights = Flight.where(flight_params).where('takeoff::date = ?', params[:flight][:date])
+      @flights = Flight.where(flight_params)
     end
     # fail
   end
@@ -11,7 +11,7 @@ class FlightsController < ApplicationController
   private
 
   def flight_params
-    params.require(:flight).permit(:origin_id, :destination_id)
+    params.require(:flight).permit(:origin_id, :destination_id, :date)
   end
 
   def search_params

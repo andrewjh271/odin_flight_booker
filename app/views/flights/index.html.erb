@@ -16,9 +16,9 @@
   <div class="field">
     <%= form.label(:date) %>
     <%= form.collection_select(:date,
-                               Flight.find_by_sql('SELECT DISTINCT takeoff::date FROM flights ORDER BY takeoff'),
-                               :takeoff,
-                               :takeoff_formatted) %>
+                               Flight.select(:date).distinct,
+                               :date,
+                               :formatted_date) %>
   </div>
 
   <div class="field">

@@ -6,8 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-def random_takeoff
-  Faker::Time.between(from: 5.days.from_now, to: 7.days.from_now)
+def random_time
+  Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
+end
+
+def random_date
+  Faker::Date.between(from: 7.days.from_now, to: 10.days.from_now)
 end
 
 ActiveRecord::Base.transaction do
@@ -25,14 +29,13 @@ ActiveRecord::Base.transaction do
   # a9 = Airport.create(code: 'BOS', name: 'Logan International Airport', city: 'Boston')
   # a10 = Airport.create(code: 'PIT', name: 'Pittsburgh International Airport', city: 'Pittsburgh')
 
-  f1 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a2, duration: 252)
-  f2 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a2, duration: 252)
-  f3 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a2, duration: 252)
-  f4 = Flight.create(takeoff: random_takeoff, origin: a2, destination: a1, duration: 252)
-  f5 = Flight.create(takeoff: random_takeoff, origin: a2, destination: a1, duration: 252)
-  f6 = Flight.create(takeoff: random_takeoff, origin: a3, destination: a1, duration: 304)
-  f7 = Flight.create(takeoff: random_takeoff, origin: a3, destination: a1, duration: 304)
-  f8 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a3, duration: 304)
-  f9 = Flight.create(takeoff: random_takeoff, origin: a1, destination: a3, duration: 304)
-
+  f1 = Flight.create(date: random_date, time: random_time, origin: a1, destination: a2, duration: 252)
+  f2 = Flight.create(date: random_date, time: random_time, origin: a1, destination: a2, duration: 252)
+  f3 = Flight.create(date: random_date, time: random_time, origin: a1, destination: a2, duration: 252)
+  f4 = Flight.create(date: random_date, time: random_time, origin: a2, destination: a1, duration: 252)
+  f5 = Flight.create(date: random_date, time: random_time, origin: a2, destination: a1, duration: 252)
+  f6 = Flight.create(date: random_date, time: random_time, origin: a3, destination: a1, duration: 304)
+  f7 = Flight.create(date: random_date, time: random_time, origin: a3, destination: a1, duration: 304)
+  f8 = Flight.create(date: random_date, time: random_time, origin: a1, destination: a3, duration: 304)
+  f9 = Flight.create(date: random_date, time: random_time, origin: a1, destination: a3, duration: 304)
 end
