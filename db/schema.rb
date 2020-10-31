@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_002654) do
+ActiveRecord::Schema.define(version: 2020_10_31_224406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2020_10_31_002654) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_airports_on_code", unique: true
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "flight_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["flight_id"], name: "index_bookings_on_flight_id"
   end
 
   create_table "flights", force: :cascade do |t|
@@ -36,6 +43,24 @@ ActiveRecord::Schema.define(version: 2020_10_31_002654) do
     t.index ["origin_id"], name: "index_flights_on_origin_id"
   end
 
+  create_table "passenger_bookings", id: false, force: :cascade do |t|
+    t.bigint "passenger_id", null: false
+    t.bigint "booking_id", null: false
+    t.index ["booking_id"], name: "index_passenger_bookings_on_booking_id"
+    t.index ["passenger_id"], name: "index_passenger_bookings_on_passenger_id"
+  end
+
+  create_table "passengers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_passengers_on_email", unique: true
+  end
+
+  add_foreign_key "bookings", "flights"
   add_foreign_key "flights", "airports", column: "destination_id"
   add_foreign_key "flights", "airports", column: "origin_id"
+  add_foreign_key "passenger_bookings", "bookings"
+  add_foreign_key "passenger_bookings", "passengers"
 end
