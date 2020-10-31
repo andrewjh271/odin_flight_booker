@@ -1,6 +1,7 @@
+<% if flights %>
+
 <h3><%= pluralize(flights.length, 'flight') %> matched your search.</h3>
 
-<% if flights.any? %>
   <table>
     <thead>
       <tr>
@@ -10,7 +11,7 @@
         <th>Date</th>
         <th>Time</th>
         <th>Duration</th>
-        <th colspan="3"></th>
+        <th></th>
       </tr>
     </thead>
 
