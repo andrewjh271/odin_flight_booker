@@ -26,3 +26,19 @@ th, td {
 .passenger-form {
   display: flex;
 }
+
+/* flash */
+
+.flash-container {
+  background-color: #afe6fb69;
+}
+
+#notice {
+  padding: 1vh;
+  color: rgb(22, 129, 76);
+}
+
+.alert {
+  padding: 1vh;
+  color: red;
+}

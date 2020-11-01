@@ -1,9 +1,15 @@
 class BookingsController < ApplicationController
 
   def new
-    @booking = Booking.new
-    params[:tickets].to_i.times { @booking.passengers.build }
-    @flight = Flight.find(params[:flight_id])
+    if params[:tickets].blank?
+      flash.alert = 'You must select number of passengers in your search in order to book a flight.'
+      redirect_to root_url
+    else
+      @booking = Booking.new
+      params[:tickets].to_i.times { @booking.passengers.build }
+      @flight = Flight.find(params[:flight_id])
+      render :new
+    end
   end
 
   def create
