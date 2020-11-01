@@ -1,0 +1,32 @@
+<% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= render 'flights/flight', flight: @flight %>
+
+<%= form_with(model: @booking, local: true) do |form| %>
+  <%= form.hidden_field :flight_id, value: @flight.id %>
+
+  <h4>Passengers:</h4>
+  <%= form.fields_for :passengers do |passengers_form| %>
+    <div class='passenger-form'>
+      <%= passengers_form.label :name %>
+      <%= passengers_form.text_field :name %>
+
+      <%= passengers_form.label :email %>
+      <%= passengers_form.text_field :email %>
+    </div>
+  <% end %>
+  <br>
+  <%= form.submit 'Book Flight' %>
+<% end %>
+
+<br>
+<br>
+<%= link_to 'Select another flight', root_path %>

@@ -24,7 +24,12 @@
           <td><%= flight.formatted_date %></td>
           <td><%= flight.formatted_time %></td>
           <td><%= flight.duration %></td>
-          <td><%= link_to 'Show', root_path %></td>
+          <td>
+            <%= button_to 'Book Flight',
+                new_booking_path,
+                method: :get,
+                params: { flight_id: flight.id, tickets: params[:flight][:tickets] } %>
+          </td>
         </tr>
       <% end %>
     </tbody>

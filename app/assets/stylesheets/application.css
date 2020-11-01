@@ -22,3 +22,7 @@
 th, td {
   padding: 15px;
 }
+
+.passenger-form {
+  display: flex;
+}

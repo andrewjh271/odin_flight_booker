@@ -1,0 +1,10 @@
+<h3>Flight <%= @booking.flight.id %> successfully booked!</h3>
+
+<%= render 'flights/flight', flight: @booking.flight %>
+
+Passengers:
+<ul>
+  <% @booking.passengers.each do |passenger| %>
+    <li><%= passenger.name + ' | ' + passenger.email %></li>
+  <% end %>
+</ul>
