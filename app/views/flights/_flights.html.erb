@@ -16,7 +16,7 @@
     </thead>
 
     <tbody>
-      <% @flights.includes(:origin, :destination).each do |flight| %>
+      <% flights.each do |flight| %>
         <tr>
           <td><%= flight.id %></td>
           <td><%= flight.origin.code %></td>

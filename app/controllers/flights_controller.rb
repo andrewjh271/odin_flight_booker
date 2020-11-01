@@ -4,7 +4,7 @@ class FlightsController < ApplicationController
     if params[:flight]
       # removes fields user did not select (e.g. origin: '')
       params[:flight].delete_if { |_k, v| v.empty? }
-      @flights = params[:flight].empty? ? Flight.all : Flight.where(flight_params)
+      @flights = (params[:flight].empty? ? Flight.all : Flight.where(flight_params)).includes(:origin, :destination)
     end
   end
 
