@@ -12,12 +12,12 @@
 
   <tbody>
     <tr>
-      <td><%= flight.id %></td>
+      <td><%= "OA#{flight.id}" %></td>
       <td><%= flight.origin.code %></td>
       <td><%= flight.destination.code %></td>
       <td><%= flight.formatted_date %></td>
       <td><%= flight.formatted_time %></td>
-      <td><%= flight.duration %></td>
+      <td><%= flight.formatted_duration %></td>
     </tr>
   </tbody>
 </table>

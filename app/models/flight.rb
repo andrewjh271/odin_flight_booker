@@ -27,4 +27,8 @@ class Flight < ApplicationRecord
     time.strftime('%l:%M%P')
   end
 
+  def formatted_duration
+    "%dh %02dm" % duration.divmod(60)
+  end
+
 end

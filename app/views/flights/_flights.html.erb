@@ -1,6 +1,6 @@
 <% if flights %>
 
-<h3><%= pluralize(flights.length, 'flight') %> matched your search.</h3>
+<h4><%= pluralize(flights.length, 'flight') %> matched your search...</h4>
 
   <table>
     <thead>
@@ -18,17 +18,18 @@
     <tbody>
       <% flights.each do |flight| %>
         <tr>
-          <td><%= flight.id %></td>
+          <td><%= "OA#{flight.id}" %></td>
           <td><%= flight.origin.code %></td>
           <td><%= flight.destination.code %></td>
           <td><%= flight.formatted_date %></td>
           <td><%= flight.formatted_time %></td>
-          <td><%= flight.duration %></td>
-          <td>
+          <td><%= flight.formatted_duration %></td>
+          <td class='td-booking'>
             <%= button_to 'Book Flight',
                 new_booking_path,
                 method: :get,
-                params: { flight_id: flight.id, tickets: params[:flight][:tickets] } %>
+                params: { flight_id: flight.id, tickets: params[:flight][:tickets] },
+                id: 'booking-button' %>
           </td>
         </tr>
       <% end %>

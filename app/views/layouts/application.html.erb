@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OdinFlightBooker</title>
+    <title>OdinAir</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
   </head>
 
   <body>
+    <header>
+      <div class='header-left'>
+        <button class='header-button border-right'>
+          <ion-icon name="airplane-sharp"></ion-icon><%= link_to 'Odin Air', root_path, class: 'title header-item' %>
+        </button><!--
+        --><button class='header-button border-right'>
+          <%= link_to 'Flights', flights_path, class: 'header-item' %>
+        </button><!--
+        --><button class='header-button border-right'>
+          <%= link_to 'Bookings', root_path, class: 'header-item' %>
+        </button>
+      </div>
+      <div class='header-right'>
+        <button class='header-button border-left'>
+          <%= link_to 'About', about_path, class: 'header-item' %>
+        </button>
+      </div>
+    </header>
     <% if notice || alert %>
       <div class='flash-container'>
         <% if notice %>
@@ -20,6 +40,11 @@
         <% end %>
       </div>
     <% end %>
-    <%= yield %>
+    <div class='page-body'>
+      <%= yield %>
+    </div>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

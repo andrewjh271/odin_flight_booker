@@ -13,11 +13,6 @@ pre {
   padding: 10px;
   font-size: 11px; }
 
-th {
-  padding-bottom: 5px; }
-
-td {
-  padding: 0 5px 7px; }
 
 div.field,
 div.actions {
@@ -27,8 +22,7 @@ div.actions {
   color: green; }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: #ff00007a;
+  width: 100%;
   box-shadow: 0px 3px 11px 2px #ff0000b0;
   display: table;
 }

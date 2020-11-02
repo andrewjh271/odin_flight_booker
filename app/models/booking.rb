@@ -19,9 +19,9 @@ class Booking < ApplicationRecord
   private
 
   def find_or_create_passenger
-    # byebug
-      self.passengers = self.passengers.map do |passenger|
-        Passenger.find_or_create_by(email: passenger.email, name: passenger.name)
-      end
+    self.passengers = self.passengers.map do |passenger|
+      current = Passenger.find_or_create_by(email: passenger.email, name: passenger.name)
+      current ? current : Passenger.new
+    end
   end
 end

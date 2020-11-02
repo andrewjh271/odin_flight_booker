@@ -4,24 +4,24 @@
     <%= form.collection_select(:origin_id,
                                Airport.all,
                                :id,
-                               :code, 
-                               include_blank: 'Origin') %>
-
-    <%= form.collection_select(:destination_id,
+                               :city, 
+                               include_blank: 'Origin', input_html: {class: 'search-form-item'}) %><!--
+    
+    --><%= form.collection_select(:destination_id,
                                Airport.all,
                                :id,
-                               :code,
-                               include_blank: 'Destination') %>
+                               :city,
+                               include_blank: 'Destination') %><!--
 
-    <%= form.collection_select(:date,
+    --><%= form.collection_select(:date,
                                Flight.select(:date).distinct.order(:date),
                                :date,
                                :formatted_date,
-                               include_blank: 'Date') %>
+                               include_blank: 'Date') %><!--
 
-    <%= form.select(:tickets, 1..4, include_blank: 'Passengers') %>
+    --><%= form.select(:tickets, 1..4, include_blank: 'Passengers', input_html: { class: 'hello' }) %><!--
 
-    <%= form.button :submit, 'Search' %>
+    --><%= form.button :submit, 'Search', id: 'search-button' %>
   </div>
 
 <% end %>

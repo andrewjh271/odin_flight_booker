@@ -13,5 +13,6 @@ class Passenger < ApplicationRecord
   has_many :bookings, through: :passenger_bookings
   has_many :flights, through: :bookings
 
-  validates :email, uniqueness: true
+  validates :name, :email, presence: true
+  validates :email, uniqueness: true, if: -> { !email.blank? }
 end

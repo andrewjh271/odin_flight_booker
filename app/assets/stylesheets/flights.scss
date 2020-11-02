@@ -1,0 +1,104 @@
+$flight-width: 65%;
+$booking-blue: #0782d4;
+
+h3 {
+  width: $flight-width;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 28px;
+}
+
+.search-form {
+  display: flex;
+  width: $flight-width;
+  margin: auto;
+}
+
+
+.search-form select {
+  flex-grow: 1;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 16px;
+  border: 1px solid #949494;
+  height: 29px;
+}
+
+.search-form select:focus {
+  outline: none;
+}
+
+#search-button {
+  width: 5vw;
+  margin-left: 2px;
+  background-color: #9671e0;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+#search-button:hover {
+  cursor: pointer;
+  background-color: #6f54a5;
+  transition: 300ms;
+}
+
+// search results
+
+h4 {
+  width: $flight-width;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+table, th, td {
+  // border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #cecece;
+  padding: 15px;
+}
+
+.td-booking {
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 10vw;
+}
+
+th {
+  background-color: #0098c578;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+tr {
+  background-color: #f5faff;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f5ff;
+}
+
+table {
+  width: $flight-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#booking-button {
+  width: 100%;
+  border: 1px solid $booking-blue;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 28px;
+  background-color: white;
+  color: $booking-blue;
+}
+
+#booking-button:hover {
+  color: white;
+  background-color: $booking-blue;
+  transition: 300ms;
+}

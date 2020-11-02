@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
 
   def new
     if params[:tickets].blank?
-      flash.alert = 'You must select number of passengers in your search in order to book a flight.'
+      flash.alert = 'You must select the number of passengers in your search in order to book a flight.'
       redirect_to root_url
     else
       @booking = Booking.new
@@ -17,6 +17,16 @@ class BookingsController < ApplicationController
     if @booking.save
       render :show
     else
+      # fail
+      # byebug
+      flash.now[:alert] = ''
+      if @booking.errors[:'passengers.name'].include?("can't be blank") ||
+         @booking.errors[:'passengers.email'].include?("can't be blank")   
+        flash.now[:alert] << 'The highlighted fields cannot be left blank. '
+      end
+      if @booking.errors[:'passengers.email'].include?('has already been taken')
+        flash.now[:alert] << 'Another passenger has already taken the highlighted email address.'
+      end
       @flight = Flight.find(params[:booking][:flight_id])
       render :new
     end
