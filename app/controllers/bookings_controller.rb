@@ -15,10 +15,8 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
-      render :show
+      redirect_to booking_path(@booking.confirmation)
     else
-      # fail
-      # byebug
       flash.now[:alert] = ''
       if @booking.errors[:'passengers.name'].include?("can't be blank") ||
          @booking.errors[:'passengers.email'].include?("can't be blank")   
@@ -29,6 +27,16 @@ class BookingsController < ApplicationController
       end
       @flight = Flight.find(params[:booking][:flight_id])
       render :new
+    end
+  end
+
+  def show
+    @booking = Booking.find_by(confirmation: params[:id])
+    if @booking
+      render :show
+    else
+      flash[:alert] = 'Sorry, the booking you\'re looking for does not exist.'
+      redirect_to root_url
     end
   end
 

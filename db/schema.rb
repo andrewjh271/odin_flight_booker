@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_224406) do
+ActiveRecord::Schema.define(version: 2020_11_03_072406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_10_31_224406) do
     t.bigint "flight_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "confirmation", null: false
+    t.index ["confirmation"], name: "index_bookings_on_confirmation", unique: true
     t.index ["flight_id"], name: "index_bookings_on_flight_id"
   end
 
