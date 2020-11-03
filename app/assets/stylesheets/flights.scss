@@ -1,5 +1,6 @@
 $flight-width: 65%;
-$booking-blue: #0782d4;
+// $booking-blue: #0782d4;
+$booking-blue: #385898;
 
 h3 {
   width: $flight-width;
@@ -13,7 +14,6 @@ h3 {
   width: $flight-width;
   margin: auto;
 }
-
 
 .search-form select {
   flex-grow: 1;

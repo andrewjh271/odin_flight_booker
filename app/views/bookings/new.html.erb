@@ -1,26 +1,25 @@
 <h3>Complete Booking</h3>
 <%= render 'flights/flight', flight: @flight %>
 
-<h4>Passengers Details</h4>
-<div class='passenger-form-container'>
+<h4>Passengers Details...</h4>
+
   <%= form_with(model: @booking, local: true) do |form| %>
     <%= form.hidden_field :flight_id, value: @flight.id %>
-
-    <%= form.fields_for :passengers do |passengers_form| %>
-      <div class='passenger-form-fields'>
-        <div class='input-container'>
-          <%= passengers_form.text_field :name, class: 'passenger-input no-right-border', placeholder: 'Passenger Name' %>
-        </div>
-        <div class='input-container'>
-          <%= passengers_form.text_field :email, class: 'passenger-input', placeholder: 'Passenger Email' %>
-        </div>
-      </div>
-    <% end %>
-    <br>
-    <%= form.submit 'Book Flight' %>
+    <div class='passenger-form-container'>
+        <%= form.fields_for :passengers do |passengers_form| %>
+          <div class='passenger-form-fields'>
+            <div class='input-container'>
+              <%= passengers_form.text_field :name, class: 'passenger-input no-right-border', placeholder: 'Passenger Name' %>
+            </div>
+            <div class='input-container'>
+              <%= passengers_form.text_field :email, class: 'passenger-input', placeholder: 'Passenger Email' %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+    <div id='confirmation-buttons'>
+      <%= form.submit 'Book Flight', id: 'book-flight' %>
+      <ion-icon name="airplane-sharp", id='booking-airplane'></ion-icon>
+      <%= link_to 'Cancel', root_path, id: 'cancel-booking' %>
+    </div>
   <% end %>
-</div>
-
-<br>
-<br>
-<%= link_to 'Select another flight', root_path %>
