@@ -1,10 +1,66 @@
-<h3>Flight <%= @booking.flight.id %> successfully booked!</h3>
+<br>
+<br>
 
 <%= render 'flights/flight', flight: @booking.flight %>
 
-Passengers:
-<ul>
+<div class='ticket-container'>
   <% @booking.passengers.each do |passenger| %>
-    <li><%= passenger.name + ' | ' + passenger.email %></li>
+    <div class='ticket'>
+      <div class='logo-main logo ticket-item'>
+        <ion-icon name="airplane-sharp", id='airplane-ticket-logo'></ion-icon>
+        <span>Odin Air</span>
+      </div>
+      <div class='boarding-pass-main ticket-item'>Boarding Pass</div>
+      <div class='logo-stub logo ticket-item'>
+        <ion-icon name="airplane-sharp", id='airplane-ticket-logo'></ion-icon>
+        <span>Odin Air</span>
+      </div>
+
+      <div class='itinerary-main ticket-item'>
+        <span><%= @booking.flight.origin.code %></span>
+        <ion-icon name="airplane-sharp", id='airplane-direction'></ion-icon>
+        <span><%= @booking.flight.destination.code %></span>
+      </div>
+      <div class='passenger-stub ticket-item'>
+        <div class='ticket-header'>Passenger</div>
+        <div><%= passenger.name %></div>
+      </div>
+      <div class='flight-stub ticket-item stub-right'>
+        <div class='ticket-header'>Flight</div>
+        <div><%= @booking.flight.id %></div>
+      </div>
+      <div class='origin-stub ticket-item'>
+        <div class='ticket-header'>Origin</div>
+        <div><%= @booking.flight.origin.code %></div>
+      </div>
+      <div class='destination-stub ticket-item stub-right'>
+        <div class='ticket-header'>Destination</div>
+        <div><%= @booking.flight.destination.code %></div>
+      </div>
+      <div class='passenger-main ticket-item'>
+        <div class='ticket-header'>Passenger</div>
+        <div><%= passenger.name %></div>
+      </div>
+      <div class='flight-main ticket-item'>
+        <div class='ticket-header'>Flight</div>
+        <div><%= @booking.flight.id %></div>
+      </div>
+      <div class='boarding-main ticket-item'>
+        <div class='ticket-header'>Boarding</div>
+        <div><%= @booking.flight.boarding_time %></div>
+      </div>
+      <div class='departure-main ticket-item'>
+        <div class='ticket-header'>Departure</div>
+        <div><%= @booking.flight.formatted_time %></div>
+      </div>
+      <div class='boarding-stub ticket-item'>
+        <div class='ticket-header'>Boarding</div>
+        <div><%= @booking.flight.boarding_time %></div>
+      </div>
+      <div class='departure-stub ticket-item stub-right'>
+        <div class='ticket-header'>Departure</div>
+        <div><%= @booking.flight.formatted_time %></div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

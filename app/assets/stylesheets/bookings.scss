@@ -1,7 +1,8 @@
-// passenger form
 $booking-width: 65%;
-// $booking-blue: #0782d4;
 $booking-blue: #385898;
+$ticket-border: 1px dashed #b3b3b3;
+
+// passenger form
 
 .passenger-form-container {
   width: $booking-width;
@@ -113,4 +114,137 @@ a#cancel-booking {
 #booking-airplane:active {
   color: white;
   transition: 300ms;
+}
+
+// tickets
+
+.ticket-container {
+  width: 50%;
+  box-sizing: border-box;
+  margin-top: 4vh;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #cecece;
+}
+
+.ticket {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr 0.9fr 0.8fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  background-color: #fdfdfd;
+}
+
+.ticket-item {
+  padding: 5px;
+}
+
+.logo-main {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  font-size: 27px;
+  padding: 4px;
+}
+
+#airplane-ticket-logo {
+  font-size: 27px;
+  color: $booking-blue;
+}
+
+.boarding-pass-main {
+  grid-column: 3 / 5;
+  grid-row: 1 / 2;
+  border-right: $ticket-border;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: end;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.logo-stub {
+  grid-column: 5 / 7;
+  grid-row: 1 / 2;
+  font-size: 2.5vh;
+}
+
+.itinerary-main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-column: 1 / 5;
+  grid-row: 2 / 4;
+  border-right: $ticket-border;
+  font-size: 6.5vh
+}
+
+#airplane-direction {
+  font-size: 30px;
+  transform: none;
+  color: $booking-blue;
+}
+
+.passenger-stub {
+  grid-column: 5 / 7;
+  grid-row: 2 / 3;
+}
+
+.flight-stub {
+  grid-column: 6 / 7;
+  grid-row: 2 / 3;
+}
+
+.origin-stub {
+  grid-column: 5 / 6;
+  grid-row: 3 / 4;
+}
+
+.destination-stub {
+  grid-column: 6 / 7;
+  grid-row: 3 / 4;
+}
+
+.passenger-main {
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
+}
+
+.flight-main {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  text-align: end;
+}
+
+.boarding-main {
+  grid-column: 3 / 4;
+  grid-row: 4 / 5;
+  text-align: end;
+}
+
+.departure-main {
+  grid-column: 4 / 5;
+  grid-row: 4 / 5;
+  text-align: end;
+  border-right: $ticket-border;
+}
+
+.boarding-stub {
+  grid-column: 5 / 6;
+  grid-row: 4 / 5;
+}
+
+.departure-stub {
+  grid-column: 6 / 7;
+  grid-row: 4 / 5;
+}
+
+.logo {
+  font-family: 'Tangerine', cursive;
+}
+
+.ticket-header {
+  color: gray;
+}
+
+.stub-right {
+  text-align: right;
 }
