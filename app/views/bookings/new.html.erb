@@ -18,8 +18,8 @@
         <% end %>
     </div>
     <div id='confirmation-buttons'>
-      <%= form.submit 'Book Flight', id: 'book-flight' %>
-      <ion-icon name="airplane-sharp", id='booking-airplane'></ion-icon>
       <%= link_to 'Cancel', root_path, id: 'cancel-booking' %>
+      <ion-icon name="airplane-sharp", id='booking-airplane'></ion-icon>
+      <%= form.submit 'Book Flight', id: 'book-flight' %>
     </div>
   <% end %>

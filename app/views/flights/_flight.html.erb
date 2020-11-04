@@ -5,14 +5,14 @@
       <th>Departs</th>
       <th>Arrives</th>
       <th>Date</th>
-      <th>Time</th>
+      <th>Departure</th>
       <th>Duration</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td><%= "OA#{flight.id}" %></td>
+      <td><%= flight.formatted_flight_number %></td>
       <td><%= flight.origin.code %></td>
       <td><%= flight.destination.code %></td>
       <td><%= flight.formatted_date %></td>

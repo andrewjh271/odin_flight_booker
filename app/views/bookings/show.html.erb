@@ -2,6 +2,7 @@
 <br>
 
 <%= render 'flights/flight', flight: @booking.flight %>
+<h3 id='confirmation-display'>Confirmation Number: <%= @booking.confirmation %></h3>
 
 <div class='ticket-container'>
   <% @booking.passengers.each do |passenger| %>
@@ -23,11 +24,11 @@
       </div>
       <div class='passenger-stub ticket-item'>
         <div class='ticket-header'>Passenger</div>
-        <div><%= passenger.name %></div>
+        <div><%= passenger.formatted_name_short %></div>
       </div>
       <div class='flight-stub ticket-item stub-right'>
         <div class='ticket-header'>Flight</div>
-        <div><%= @booking.flight.id %></div>
+        <div><%= @booking.flight.formatted_flight_number %></div>
       </div>
       <div class='origin-stub ticket-item'>
         <div class='ticket-header'>Origin</div>
@@ -39,11 +40,11 @@
       </div>
       <div class='passenger-main ticket-item'>
         <div class='ticket-header'>Passenger</div>
-        <div><%= passenger.name %></div>
+        <div><%= passenger.formatted_name_long %></div>
       </div>
       <div class='flight-main ticket-item'>
         <div class='ticket-header'>Flight</div>
-        <div><%= @booking.flight.id %></div>
+        <div><%= @booking.flight.formatted_flight_number %></div>
       </div>
       <div class='boarding-main ticket-item'>
         <div class='ticket-header'>Boarding</div>

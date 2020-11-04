@@ -15,4 +15,12 @@ class Passenger < ApplicationRecord
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true, if: -> { !email.blank? }
+
+  def formatted_name_long
+    name.slice(0, 23).upcase
+  end
+
+  def formatted_name_short
+    name.slice(0, 16).upcase
+  end
 end

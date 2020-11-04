@@ -1,4 +1,5 @@
 $booking-width: 65%;
+$ticket-width: 52%;
 $booking-blue: #385898;
 $ticket-border: 1px dashed #b3b3b3;
 
@@ -83,13 +84,13 @@ a#cancel-booking {
 #cancel-booking {
   width: 40%;
   box-sizing: border-box;
-  border: 1px solid $booking-blue;
+  border: 1px solid #8b70bb;
   border-radius: 4px;
   cursor: pointer;
   height: 28px;
   background-color: white;
   font-family: 'Nanum Myeongjo', serif;
-  color: $booking-blue;
+  color: #8b70bb;
   text-align: center;
   padding-top: 5px;
 }
@@ -119,19 +120,21 @@ a#cancel-booking {
 // tickets
 
 .ticket-container {
-  width: 50%;
+  width: $ticket-width;
   box-sizing: border-box;
-  margin-top: 4vh;
+  // margin-top: 4vh;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid #cecece;
+  // border: 1px solid #cecece;
 }
 
 .ticket {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr 1fr 0.9fr 0.8fr;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr 0.8fr 0.7fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   background-color: #fdfdfd;
+  margin-top: 4vh;
+  border: 1px solid #cecece;
 }
 
 .ticket-item {
@@ -225,6 +228,7 @@ a#cancel-booking {
   grid-row: 4 / 5;
   text-align: end;
   border-right: $ticket-border;
+  padding-right: 15px;
 }
 
 .boarding-stub {
@@ -247,4 +251,13 @@ a#cancel-booking {
 
 .stub-right {
   text-align: right;
+}
+
+#confirmation-display {
+  width: $ticket-width;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4vh;
+  margin-bottom: 0;
+  font-size: 28px;
 }
