@@ -1,0 +1,25 @@
+<h3>Find a booking</h3>
+
+<%= form_with(url: search_bookings_path, method: :get, local: true) do |form| %>
+  <div class='booking-search-form'>
+
+    <%= select_tag(:search_field,
+                  options_for_select([['---- Search By ----', 0], ['Confirmation Number', 'confirmation'], ['Email Address', 'email']], { disabled: 0, selected: 0 }),
+                  id: 'search-booking-select'
+                  ) %>
+
+    <%= form.text_field :search_param %>
+
+    <%= form.button :Search, id: 'search-button' %>
+  </div>
+<% end %>
+
+<% if @bookings %>
+  <ul>
+    <% @bookings.all.each do |booking| %>
+      <%= booking.confirmation %>
+      <%= booking.flight_id %>
+      <hr>
+    <% end %>
+  </ul>
+<% end %>

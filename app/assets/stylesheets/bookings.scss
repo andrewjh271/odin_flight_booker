@@ -261,3 +261,43 @@ a#cancel-booking {
   margin-bottom: 0;
   font-size: 28px;
 }
+
+// search for booking
+
+.booking-search-form {
+  display: flex;
+  width: 65%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.booking-search-form select {
+  flex-grow: 1;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 16px;
+  border: 1px solid #949494;
+  height: 3.5vh;
+}
+
+.booking-search-form select:focus {
+  outline: none;
+}
+
+#search-booking-select {
+  flex-grow: 0;
+}
+
+.booking-search-form input {
+  box-sizing: border-box;
+  font-family: 'Nanum Myeongjo', serif;
+  border: 1px solid #949494;
+  padding-left: 10px;
+  font-size: 18px;
+  width: 40%;
+  margin-left: 2px;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: #ccddff7c;
+}

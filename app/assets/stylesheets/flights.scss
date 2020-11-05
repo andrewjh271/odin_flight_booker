@@ -12,7 +12,8 @@ h3 {
 .search-form {
   display: flex;
   width: $flight-width;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .search-form select {
@@ -20,7 +21,7 @@ h3 {
   font-family: 'Nanum Myeongjo', serif;
   font-size: 16px;
   border: 1px solid #949494;
-  height: 29px;
+  height: 3.5vh;
 }
 
 .search-form select:focus {

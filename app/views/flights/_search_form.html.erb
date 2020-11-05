@@ -5,7 +5,7 @@
                                Airport.all,
                                :id,
                                :city, 
-                               include_blank: 'Origin', input_html: {class: 'search-form-item'}) %><!--
+                               include_blank: 'Origin') %><!--
     
     --><%= form.collection_select(:destination_id,
                                Airport.all,
@@ -19,7 +19,7 @@
                                :formatted_date,
                                include_blank: 'Date') %><!--
 
-    --><%= form.select(:tickets, 1..4, include_blank: 'Passengers', input_html: { class: 'hello' }) %><!--
+    --><%= form.select(:tickets, 1..4, include_blank: 'Passengers') %><!--
 
     --><%= form.button :submit, 'Search', id: 'search-button' %>
   </div>
