@@ -10,6 +10,7 @@
 #  updated_at     :datetime         not null
 #  date           :date             not null
 #  time           :time             not null
+#  flight_number  :integer          default(-1), not null
 #
 require 'rails_helper'
 

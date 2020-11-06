@@ -1,0 +1,76 @@
+$flight-width: 65%;
+$booking-blue: #385898;
+$booking-width: 65%;
+
+h3 {
+  width: $flight-width;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 28px;
+}
+
+h4 {
+  width: $flight-width;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+// used for flight search form and booking search form
+
+#search-button {
+  width: 5vw;
+  margin-left: 2px;
+  background-color: #9671e0;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+#search-button:hover {
+  cursor: pointer;
+  background-color: #6f54a5;
+  transition: 300ms;
+}
+
+#search-button:focus {
+  outline: none;
+  background-color: #d683e0;
+}
+
+// used for flight and booking info
+
+table, th, td {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #cecece;
+  padding: 15px;
+}
+
+.td-booking {
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 10vw;
+}
+
+th {
+  background-color: #0098c578;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+tr {
+  background-color: #f5faff;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f5ff;
+}
+
+table {
+  width: $flight-width;
+  margin-left: auto;
+  margin-right: auto;
+}

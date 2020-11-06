@@ -18,21 +18,13 @@ html, body {
   margin:0;
   padding:0;
   width:100%;
-  /* background-image: linear-gradient(45deg,#e2e6ea, #dfedef, #eff5fc); */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-image: linear-gradient(45deg,#f9fcff, #f1fbfd, #eff5fc);
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 400;
 }
-
-/* table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-} */
-
-/* th, td {
-  padding: 15px;
-} */
-
 
 /* header */
 
@@ -42,7 +34,6 @@ header {
   height: 7vh;
   background-color: #7190af6b;
   background-image: linear-gradient(45deg, #3c4e5d, #afd8ec85);
-  /* padding: 5px; */
   box-sizing: border-box;
 }
 
@@ -86,6 +77,8 @@ header {
   border-left: 1px solid rgba(0, 0, 0, 0.171);
 }
 
+/* logo */
+
 .title {
   font-family: 'Tangerine', cursive;
   font-size: 32px;
@@ -97,10 +90,9 @@ ion-icon {
   transform: rotate(-33deg);
 }
 
-/* container for pages other than root */
+/* container for all pages excluding header */
 
 .page-body {
-  min-height: 89vh;
   padding: 1vh 5vw 2vw 5vw;
   box-sizing: border-box;
   display: flex;
@@ -141,65 +133,8 @@ a:visited {
   text-decoration: none;
 }
 
-/* submit, create, edit, cancel, etc. */
+/* for 'home' link at end of About page */
 
-.important-button {
-  background-color: #4267b27c !important;
-  border-radius: 10px;
-  padding: 1vh !important;
-}
-
-.important-button:hover {
-  background-color: #4267b2 !important;
-  color: white;
-}
-
-.important-button:focus {
-  outline: none;
-  background-color: #2758bb !important;
-  box-shadow: 1px 3px 8px #6681a7d1;
-  color: white;
-}
-
-.cancel {
-  background-color: #f56d6d !important;
-  border-radius: 10px;
-  padding: 1vh !important;
-}
-
-.cancel:hover {
-  background-color: #960101 !important;
-  color: white;
-}
-
-.cancel:focus {
-  outline: none;
-  background-color: #3a0000 !important;
-  box-shadow: 1px 3px 8px #6681a7d1;
-  color: white;
-}
-
-/* shared between events and invitations */
-
-.past {
-  background-color: #d8d8d8;
-}
-
-/* page titles */
-
-.page-title-container {
-  width: 85%;
-  margin: 0 auto 2vh auto;
-}
-
-h1 {
-  padding: 8px;
-  font-family: 'Piazzolla', serif;
-  font-size: 3em;
-}
-
-/* e.g. 'back' link at end of page */
-
-.end-link {
-  margin: auto 0 0 0;
+.empty-space {
+  height: 72vh;
 }

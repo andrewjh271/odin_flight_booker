@@ -67,6 +67,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def index
+    redirect_to search_bookings_url
+  end
+
   private
 
   def booking_params
