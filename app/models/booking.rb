@@ -11,7 +11,7 @@
 class Booking < ApplicationRecord
   belongs_to :flight
   has_many :passenger_bookings, dependent: :destroy
-  has_many :passengers, through: :passenger_bookings
+  has_many :passengers, through: :passenger_bookings, inverse_of: :bookings
 
   accepts_nested_attributes_for :passengers
 
@@ -22,8 +22,7 @@ class Booking < ApplicationRecord
 
   def find_or_create_passenger
     self.passengers = self.passengers.map do |passenger|
-      current = Passenger.find_or_create_by(email: passenger.email, name: passenger.name)
-      current ? current : Passenger.new
+      Passenger.find_or_create_by(email: passenger.email, name: passenger.name)
     end
   end
 

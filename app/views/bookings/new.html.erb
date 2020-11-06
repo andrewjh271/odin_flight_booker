@@ -7,6 +7,7 @@
     <%= form.hidden_field :flight_id, value: @flight.id %>
     <div class='passenger-form-container'>
         <%= form.fields_for :passengers do |passengers_form| %>
+          <%= passengers_form.hidden_field :id, value: nil %>
           <div class='passenger-form-fields'>
             <div class='input-container'>
               <%= passengers_form.text_field :name, class: 'passenger-input no-right-border', placeholder: 'Passenger Name' %>
