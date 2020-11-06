@@ -15,11 +15,32 @@
 <% end %>
 
 <% if @bookings %>
-  <ul>
-    <% @bookings.all.each do |booking| %>
-      <%= booking.confirmation %>
-      <%= booking.flight_id %>
-      <hr>
-    <% end %>
-  </ul>
+  <h4>Bookings for <i><%= @email %></i>...</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Confirmation #</th>
+        <th>Departs</th>
+        <th>Arrives</th>
+        <th>Departure Date</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @bookings.all.each do |booking| %>
+        <tr>
+          <td><%= booking.confirmation %></td>
+          <td><%= booking.flight.origin.code %></td>
+          <td><%= booking.flight.destination.code %></td>
+          <td><%= booking.flight.formatted_date %></td>
+          <td class='td-booking'>
+            <%= button_to 'View Booking',
+                booking_path(booking.confirmation),
+                method: :get,
+                id: 'booking-button' %>
+          </td>
+        </tr>
+      <% end %>
+  
 <% end %>

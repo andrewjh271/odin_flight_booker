@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
         flash.now[:alert] << 'The highlighted fields cannot be left blank. '
       end
       if @booking.errors[:'passengers.email'].include?('has already been taken')
-        flash.now[:alert] << 'Another passenger has already taken the highlighted email address.'
+        flash.now[:alert] << 'The highlighted email address has been taken by a user with a different name.'
       end
       @flight = Flight.find(params[:booking][:flight_id])
       render :new
@@ -42,7 +42,6 @@ class BookingsController < ApplicationController
   end
 
   def search
-    # fail
     if params.has_key?(:button)
       if !params.has_key?(:search_field)
         flash.alert = 'You must select to search by Confirmation Number or Email Address.'
@@ -56,9 +55,10 @@ class BookingsController < ApplicationController
           redirect_to search_bookings_url
         end
       else
-        @bookings = Booking.includes(:passengers)
+        @bookings = Booking.includes(:passengers, flight: [:origin, :destination])
                            .where('passengers.email = ?', params[:search_param])
                            .references(:passengers)
+        @email = params[:search_param]
         flash.alert = 'No booking could be found with the given parameters.' if @bookings.empty?
         render :search
       end
