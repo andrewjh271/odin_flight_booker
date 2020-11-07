@@ -10,6 +10,6 @@
 #
 FactoryBot.define do
   factory :booking do
-    flight { nil }
+    flight { create(:flight) }
   end
 end

@@ -14,9 +14,10 @@
 #
 FactoryBot.define do
   factory :flight do
-    takeoff { "2020-10-28 23:05:49" }
-    duration { 1 }
-    origin { nil }
-    destination { nil }
+    date { "2020-10-28" }
+    time {  "23:05:49" }
+    duration { 100 }
+    origin { create(:airport) }
+    destination { create(:airport) }
   end
 end

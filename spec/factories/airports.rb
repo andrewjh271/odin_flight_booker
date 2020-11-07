@@ -11,7 +11,7 @@
 #
 FactoryBot.define do
   factory :airport do
-    code { "MyString" }
+    code { Faker::Alphanumeric.alpha(number: 10).upcase }
     name { "MyString" }
     city { "MyString" }
   end

@@ -10,7 +10,7 @@
 #
 FactoryBot.define do
   factory :passenger do
-    name { "MyString" }
-    email { "MyString" }
+    name { Faker::Name }
+    email { Faker::Internet.email }
   end
 end
