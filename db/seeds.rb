@@ -86,7 +86,7 @@ def random_passenger
 end
 
 def random_passenger_reset!(n = @passengers.length)
-  @random_passengers = (0..n).to_a.shuffle
+  @random_passengers = (0...n).to_a.shuffle
 end
 
 ActiveRecord::Base.transaction do
@@ -134,12 +134,17 @@ ActiveRecord::Base.transaction do
     @passengers[i] = Passenger.create(name: Faker::Name.name, email: Faker::Internet.email)
   end
 
-  4.times do |i|
+  5.times do |i|
     random_passenger_reset!
     flight = Flight.limit(1).order("RANDOM()").first
     booking = Booking.new(flight: flight)
     booking.passengers << example
-    i.times { booking.passengers << random_passenger }
+    n = case i
+        when 0 then 1
+        when 4 then 2
+        else i
+        end
+    n.times { booking.passengers << random_passenger }
     booking.save
   end
 end
