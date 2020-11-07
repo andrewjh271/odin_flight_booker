@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Passenger < ApplicationRecord
-  has_many :passenger_bookings, dependent: :destroy
+  has_many :passenger_bookings, dependent: :delete_all
   has_many :bookings, through: :passenger_bookings, inverse_of: :passengers
   has_many :flights, through: :bookings
 
@@ -21,6 +21,6 @@ class Passenger < ApplicationRecord
   end
 
   def formatted_name_short
-    name.slice(0, 16).upcase
+    name.length < 16 ? name.upcase : name.slice(0, 18)
   end
 end
