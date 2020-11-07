@@ -58,6 +58,7 @@ class BookingsController < ApplicationController
         @bookings = Booking.includes(:passengers, flight: [:origin, :destination])
                            .where('passengers.email = ?', params[:search_param])
                            .references(:passengers)
+                           .order(:date, :time)
         @email = params[:search_param]
         flash.alert = 'No booking could be found with the given parameters.' if @bookings.empty?
         render :search

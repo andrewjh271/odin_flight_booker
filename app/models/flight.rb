@@ -55,5 +55,4 @@ class Flight < ApplicationRecord
   def rank
     self.class.where('date = ? AND time < ?', date, time).count + 1
   end
-
 end

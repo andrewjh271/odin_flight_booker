@@ -4,7 +4,7 @@ class FlightsController < ApplicationController
     if params[:flight]
       # removes fields user did not select (e.g. origin: '')
       params[:flight].delete_if { |_k, v| v.empty? }
-      @flights = (params[:flight].empty? ? Flight.all : Flight.where(flight_params)).includes(:origin, :destination).order(:date, :time)
+      @flights = (params[:flight].empty? ? Flight.all : Flight.where(flight_params)).includes(:origin, :destination).order(:date, :time).limit(1000)
     end
   end
 
@@ -12,7 +12,7 @@ class FlightsController < ApplicationController
 
   # search_params is designed to build the Flight object that will populate the search params
   # on a redirect after a search (it includes :tickets which is not in the db table)
-  
+
   # flight_params is used to query the database
 
   def flight_params

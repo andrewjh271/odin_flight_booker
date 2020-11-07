@@ -2,13 +2,13 @@
 
   <div class="search-form">
     <%= form.collection_select(:origin_id,
-                               Airport.all,
+                               Airport.all.order(:city),
                                :id,
                                :city, 
                                include_blank: 'Origin') %><!--
     
     --><%= form.collection_select(:destination_id,
-                               Airport.all,
+                               Airport.all.order(:city),
                                :id,
                                :city,
                                include_blank: 'Destination') %><!--

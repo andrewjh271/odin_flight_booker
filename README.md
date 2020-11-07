@@ -65,3 +65,20 @@ I think this is related to some limitations of `accepted_nested_attributes_for` 
 which will not throw the `ActiveRecord::RecordNotFound` error.
 
 I also clarified the `inverse_of` relationship in the `Booking` and `Passenger` model because I've read that sometimes that can fix issues with many to many relationships, but I don't think that made a difference here.
+
+
+
+
+
+
+
+db:seed join table id problem https://github.com/rails/rails/issues/25347 and https://stackoverflow.com/questions/23165282/error-zero-length-delimited-identifier-at-or-near-line-1-delete-from-reg/30542991
+
+delete_all vs just having an id
+
+
+
+`Flight.reset_all_flight_numbers!` after db:seed
+
+
+
