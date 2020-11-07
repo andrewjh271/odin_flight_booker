@@ -133,8 +133,17 @@ a:visited {
   text-decoration: none;
 }
 
-/* for 'home' link at end of About page */
+/* About page */
+
+p {
+  font-size: 14px;
+  font-family: 'Nanum Myeongjo', serif;
+}
 
 .empty-space {
-  height: 72vh;
+  height: 71vh;
+}
+
+#home-link {
+  font-size: 14px;
 }
