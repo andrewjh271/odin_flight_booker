@@ -1,6 +1,6 @@
 # Odin Flight Booker
 
-Created as part of the Odin Project [curriculum](https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms). View live page.
+Created as part of the Odin Project [curriculum](https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms). View [live page](https://powerful-inlet-75513.herokuapp.com/).
 
 ### Functionality
 
