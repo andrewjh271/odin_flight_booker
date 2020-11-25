@@ -51,6 +51,8 @@ group :development do
   gem 'better_errors', '~> 2.8', '>= 2.8.3'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'annotate', '~> 3.1', '>= 3.1.1'
+
+  gem 'letter_opener', '~> 1.7'
 end
 
 group :test do
