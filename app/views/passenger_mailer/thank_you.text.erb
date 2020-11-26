@@ -1,0 +1,18 @@
+Odin Air
+
+Thank you for booking Flight <%= @booking.flight.formatted_flight_number %> with Odin Air! Please review your trip details below.
+
+Confirmation Number: <%= @booking.confirmation %>
+Please visit <%= @url %> to view your booking.
+
+Flight #:  <%= @booking.flight.formatted_flight_number %>
+Departs:   <%= @booking.flight.origin.code %>
+Arrives:   <%= @booking.flight.destination.code %>
+Date:      <%= @booking.flight.formatted_date %>
+Departure:<%= @booking.flight.formatted_time %>
+Duration:  <%= @booking.flight.formatted_duration %>
+
+Passengers:
+<% @booking.passengers.each do |passenger| %>
+    <%= passenger.name %>
+<% end %>
