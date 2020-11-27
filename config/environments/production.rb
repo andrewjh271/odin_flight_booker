@@ -116,13 +116,14 @@ Rails.application.configure do
     address: 'smtp.mail.yahoo.com',
     port: 587,
     # domain: 'yahoo.com',
-    # authentication: :cram_md5,
+    authentication: :login,
     # enable_starttls_auto: true,
     user_name: ENV['YAHOO_USERNAME'],
     password: ENV['YAHOO_PASSWORD']
   }
+  # Also worked without adding 'authentication: :login'
 
   config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.default_url_options = { host: 'odin-air.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'odin-air.herokuapp.com', protocol: 'https' }
 end
