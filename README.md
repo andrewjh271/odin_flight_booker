@@ -1,6 +1,6 @@
 # Odin Flight Booker
 
-Created as part of the Odin Project [curriculum](https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms). View [live page](https://powerful-inlet-75513.herokuapp.com/).
+Created as part of the Odin Project [curriculum](https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms). View [live page](https://odin-air.herokuapp.com/).
 
 ### Functionality
 
@@ -9,6 +9,10 @@ Search and book flights for Odin Air's flight offerings of November, 2021. The d
 There is a many to many relationship between bookings and passengers. Bookings can be searched by confirmation number or by email.
 
 I wrote basic RSpec tests for the models and for the `Bookings Controller`.
+
+###### Mailers
+
+[Part 2](https://www.theodinproject.com/courses/ruby-on-rails/lessons/sending-confirmation-emails) of this project was to send a confirmation email to all passengers after a new booking is made. In the development environment, the `letter_opener` gem is used to view the delivered email. In production, Yahoo Mail delivers mail over SMTP protocol.
 
 ### Thoughts
 
@@ -80,5 +84,15 @@ When creating the `passenger_bookings` join table I made a point to use `id: fal
 I wanted a flight's flight number to not be its `id` but its chronological ranking for that day's flights. I decided to add a database column for `flight_number` rather than calculate it anew each time it was needed. This means that if a new flight is created later flights that day will have incorrect `flight_numbers`. Since this functionality is not on the user end, I was ok with that. After seeding the database, I can run `Flight.reset_all_flight_numbers!` to ensure all `flight_numbers` are correct.
 
 A `booking's` `confirmation` is created by a `before_save` callback and is used as the `id` in a `booking_path`.
+
+###### Mail
+
+I ran into a number of difficulties with mail. Calling `PassengerMailer` directly from the Rails Console resulted in a `NameError (uninitialized constant PassengerMailer)` until I called `reload!`. This is discussed [here](https://github.com/rails/rails/issues/38174), and seems to be an issue with Spring that can be fixed with `spring stop`. Once the console recognized `PassengerMailer`, though, I was also getting an error complaining about not having `default_url_options` defined, even though it was. Closing the Terminal window and starting fresh solved both problems — I think this accomplishes the same thing that `spring stop` would have.
+
+Trying to get SendGrid to work was a disaster. First my app was banned I guess because I was trying to change my username from the one they generated into something I would recognize. I looked into choosing another Heroku addon instead, but all the others were either very limited in the free tier or did not have documentation for a Rails setup. I eventually decided to delete my entire app on Heroku and make a new one so that I could try SendGrid again. When I saw that `heroku addons:create sendgrid:starter` successfully created a `SENDGRID_USERNAME` and `SENDGRID_PASSWORD` I took a break and then got banned again (I think because I didn't confirm my account with an email address quickly enough). I deleted this app as well to try one more time, and this time got a little further but couldn't finish setting up my account with 2-factor authentication, which they require, because they said my phone number was invalid (which it isn't). Certain buttons during their sign in process (like to skip 2-factor auth) just didn't do anything, the error messages were nondescriptive, and their support seems to be almost inaccessible. Google searches yielded many accounts of similar issues. In short, I don't expect to be using SendGrid in the future. I ultimately was able to send mail using no Heroku addons, just the included Rails `mail` gem.
+
+I decided to make a Yahoo Mail account `odinair@yahoo.com` to send from — for fun, but also because I didn't really want my Gmail accounts involved. I had a tough time finding the right SMTP settings to get it to work, but eventually did (view in `config/production.rb`). Another important key was to make an app password, explained [here](https://help.yahoo.com/kb/SLN15241.html?). I knew to look for that because the Rails Guide mentions it for Gmail, but I was thrown off by Yahoo's description of it being for "1 time use."
+
+Adding `protocol: 'https'` to the production `default_url_options` makes URL links go to the secure version of the app. (I hadn't realized before that Heroku apps are on both `http` and `https`.)
 
 -Andrew Hayhurst
