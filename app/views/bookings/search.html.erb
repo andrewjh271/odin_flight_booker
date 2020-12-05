@@ -36,7 +36,7 @@
           <td><%= booking.flight.formatted_date %></td>
           <td class='td-booking'>
             <%= button_to 'View Booking',
-                booking_path(booking.confirmation),
+                booking_path(booking),
                 method: :get,
                 id: 'booking-button' %>
           </td>

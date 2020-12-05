@@ -83,7 +83,7 @@ When creating the `passenger_bookings` join table I made a point to use `id: fal
 
 I wanted a flight's flight number to not be its `id` but its chronological ranking for that day's flights. I decided to add a database column for `flight_number` rather than calculate it anew each time it was needed. This means that if a new flight is created later flights that day will have incorrect `flight_numbers`. Since this functionality is not on the user end, I was ok with that. After seeding the database, I can run `Flight.reset_all_flight_numbers!` to ensure all `flight_numbers` are correct.
 
-A `booking's` `confirmation` is created by a `before_save` callback and is used as the `id` in a `booking_path`.
+A `booking's` `confirmation` is created by a `before_save` callback and is used as the `id` in a `booking_path`. By [overriding](https://guides.rubyonrails.org/routing.html#overriding-named-route-parameters) `ActiveRecord::Base#to_param` to use `confirmation` instead of `id`, I was able to still use URL helpers like this: `booking_path(booking)`.
 
 ###### Mail
 

@@ -18,6 +18,10 @@ class Booking < ApplicationRecord
   before_validation :find_or_create_passenger
   before_save :ensure_confirmation
 
+  def to_param
+    confirmation
+  end
+
   private
 
   def find_or_create_passenger
