@@ -27,8 +27,8 @@ There ended up being a fairly easy solution to achieve this presented in [this](
 ```ruby
 def find_or_create_passenger
 	self.passengers = self.passengers.map do |passenger|
-  	Passenger.find_or_create_by(email: passenger.email, name: passenger.name)
-  end
+		Passenger.find_or_create_by(email: passenger.email, name: passenger.name)
+	end
 end
 ```
 
