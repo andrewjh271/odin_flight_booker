@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
         flash.alert = 'You must select to search by Confirmation Number or Email Address.'
         redirect_to search_bookings_url
       elsif params[:search_field] == 'confirmation'
-        @booking = Booking.find_by(confirmation: params[:search_param])
+        @booking = Booking.find_by(confirmation: params[:search_param].upcase)
         if @booking
           redirect_to booking_url(@booking.confirmation)
         else
@@ -57,7 +57,7 @@ class BookingsController < ApplicationController
         end
       else
         @bookings = Booking.includes(:passengers, flight: [:origin, :destination])
-                           .where('passengers.email = ?', params[:search_param])
+                           .where('passengers.email ILIKE ?', params[:search_param])
                            .references(:passengers)
                            .order(:date, :time)
         @email = params[:search_param]
