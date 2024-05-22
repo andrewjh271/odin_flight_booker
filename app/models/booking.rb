@@ -40,7 +40,7 @@ class Booking < ApplicationRecord
   end
 
   def generate_confirmation_number(size = 6)
-    charset = %w{ A C D E F G H J K M N P Q R T V W X Y Z }
+    charset = %w{ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z }
     (0...size).map{ charset.to_a[rand(charset.size)] }.join
   end
 end
