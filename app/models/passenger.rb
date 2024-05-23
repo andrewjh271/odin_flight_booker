@@ -21,6 +21,7 @@ class Passenger < ApplicationRecord
   end
 
   def formatted_name_short
-    name.length < 16 ? name.upcase : name.slice(0, 18)
+    # name.length < 16 ? name.upcase : name.slice(0, 15)
+    name.slice(0,14).upcase
   end
 end

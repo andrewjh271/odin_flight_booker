@@ -19,6 +19,7 @@ html, body {
   padding:0;
   width:100%;
   min-height: 100vh;
+  min-width: 560px;
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(45deg,#f9fcff, #f1fbfd, #eff5fc);
