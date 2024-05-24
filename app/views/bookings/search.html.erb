@@ -28,7 +28,7 @@
     </thead>
 
     <tbody>
-      <% @bookings.all.each do |booking| %>
+      <% @bookings.each do |booking| %>
         <tr>
           <td><%= booking.confirmation %></td>
           <td><%= booking.flight.origin.code %></td>

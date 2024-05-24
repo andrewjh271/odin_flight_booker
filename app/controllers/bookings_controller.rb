@@ -61,7 +61,7 @@ class BookingsController < ApplicationController
                            .references(:passengers)
                            .order(:date, :time)
         @email = params[:search_param]
-        flash.alert = 'No booking could be found with the given parameters.' if @bookings.empty?
+        flash.alert = 'No booking could be found with the given parameters.' if @bookings.blank?
         render :search
       end
     else
