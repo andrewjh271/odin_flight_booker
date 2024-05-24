@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       flash.notice = "Flight #{@booking.flight.formatted_flight_number} successfully booked! A confirmation email has been sent to each passenger."
-      PassengerMailer.with(booking_id: @booking.id).thank_you.deliver_now
+      PassengerMailer.with(booking: @booking).thank_you.deliver_now
       redirect_to booking_path(@booking.confirmation)
     else
       flash.now[:alert] = ''

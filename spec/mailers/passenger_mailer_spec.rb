@@ -8,7 +8,7 @@ RSpec.describe PassengerMailer, type: :mailer do
     booking.passengers = [p1, p2];
     booking
   end
-  let(:mail) { PassengerMailer.with(booking_id: booking.id).thank_you }
+  let(:mail) { PassengerMailer.with(booking: booking).thank_you }
 
   it 'renders the headers' do
     expect(mail.subject).to eq("Thank you for booking Flight #{booking.flight.formatted_flight_number}!")
