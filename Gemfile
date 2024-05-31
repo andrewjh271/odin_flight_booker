@@ -33,6 +33,7 @@ gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
 gem 'figaro', '~> 1.2'
 
+# avoid errors from Pysch 4
 gem 'psych', '< 4'
 
 group :development, :test do
