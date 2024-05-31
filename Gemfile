@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+gem 'rails', '~> 7.1', '>= 7.1.3.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -33,12 +33,14 @@ gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
 gem 'figaro', '~> 1.2'
 
+gem 'psych', '< 4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'pry-rails', '~> 0.3.9'
-  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  gem 'rspec-rails', '6.1.1'
   gem 'factory_bot_rails', '~> 6.1'
 end
 
@@ -51,7 +53,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'better_errors', '~> 2.8', '>= 2.8.3'
-  gem 'binding_of_caller', '~> 0.8.0'
+  gem 'binding_of_caller', '~> 1.0', '>= 1.0.1'
   gem 'annotate', '~> 3.1', '>= 3.1.1'
 
   gem 'letter_opener', '~> 1.7'
