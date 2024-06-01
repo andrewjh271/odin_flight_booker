@@ -74,20 +74,20 @@ RSpec.describe BookingsController, type: :controller do
     end
 
     it 'requires confirmation number or email address to be selected to perform search' do
-      get :search, params: { Search: '' }
+      get :search, params: { button: '' }
       expect(response).to redirect_to(search_bookings_url)
       expect(flash[:alert]).to eq('You must select to search by Confirmation Number or Email Address.')
     end
 
     it 'redirects to booking if existing confirmation given' do
-      get :search, params: { Search: '',
+      get :search, params: { button: '',
                              search_field: 'confirmation',
                              search_param: booking.confirmation }
       expect(response).to redirect_to(booking_path(booking.confirmation))
     end
 
     it 'redirects to booking if existing confirmation given' do
-      get :search, params: { Search: '',
+      get :search, params: { button: '',
                              search_field: 'confirmation',
                              search_param: '404' }
       expect(response).to redirect_to(search_bookings_url)
@@ -96,7 +96,7 @@ RSpec.describe BookingsController, type: :controller do
 
     it 'renders search page when searching by email' do
       booking.passengers << p1
-      get :search, params: { Search: '',
+      get :search, params: { button: '',
                              search_field: 'email',
                              search_param: p1.email }
       expect(response).to render_template(:search)
@@ -104,7 +104,7 @@ RSpec.describe BookingsController, type: :controller do
     end
 
     it 'flash[:alert] notifies if no booking was found' do
-      get :search, params: { Search: '',
+      get :search, params: { button: '',
                              search_field: 'email',
                              search_param: 'no_booking_here@gmail.com' }
       expect(response).to render_template(:search)

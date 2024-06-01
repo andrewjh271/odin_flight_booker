@@ -43,7 +43,7 @@ class BookingsController < ApplicationController
   end
 
   def search
-    if params.has_key?(:Search)
+    if params.has_key?(:button)
       if !params.has_key?(:search_field)
         flash.alert = 'You must select to search by Confirmation Number or Email Address.'
         redirect_to search_bookings_url
