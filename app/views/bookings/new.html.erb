@@ -1,26 +1,41 @@
 <h3>Complete Booking</h3>
 <%= render 'flights/flight', flight: @flight %>
 
-<h4>Passengers Details...</h4>
+<div data-controller="passenger">
+  <h4>Passengers Details...</h4>
+  <button data-action="passenger#add">+</button>
 
   <%= form_with(model: @booking, local: true) do |form| %>
     <%= form.hidden_field :flight_id, value: @flight.id %>
-    <div class='passenger-form-container'>
+    <div data-passenger-target="formContainer" class='passenger-form-container'>
         <%= form.fields_for :passengers do |passengers_form| %>
           <%= passengers_form.hidden_field :id, value: nil %>
-          <div class='passenger-form-fields'>
+          <div data-passenger-target="formField" class='passenger-form-fields'>
             <div class='input-container'>
               <%= passengers_form.text_field :name, class: 'passenger-input no-right-border', placeholder: 'Passenger Name' %>
             </div>
             <div class='input-container'>
               <%= passengers_form.text_field :email, class: 'passenger-input', placeholder: 'Passenger Email' %>
             </div>
+            <button data-action="passenger#remove">X</button>
           </div>
         <% end %>
     </div>
+    <template data-passenger-target="formTemplate">
+      <div data-passenger-target="formField" class="passenger-form-fields">
+        <div class="input-container">
+          <input class="passenger-input no-right-border" placeholder="Passenger Name" type="text" name="booking[passengers_attributes][0][name]" id="booking_passengers_attributes_0_name">
+        </div>
+        <div class="input-container">
+          <input class="passenger-input" placeholder="Passenger Email" type="text" name="booking[passengers_attributes][0][email]" id="booking_passengers_attributes_0_email">
+        </div>
+        <button data-action="passenger#remove">X</button>
+      </div>
+    </template>
     <div id='confirmation-buttons'>
       <%= link_to 'Cancel', root_path, id: 'cancel-booking' %>
       <ion-icon name="airplane-sharp", id='booking-airplane'></ion-icon>
       <%= form.submit 'Book Flight', id: 'book-flight' %>
     </div>
   <% end %>
+</div>
