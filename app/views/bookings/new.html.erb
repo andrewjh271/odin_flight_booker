@@ -2,9 +2,10 @@
 <%= render 'flights/flight', flight: @flight %>
 
 <div data-controller="passenger">
-  <h4>Passengers Details...</h4>
-  <button data-action="passenger#add">+</button>
-
+  <div class='passenger-form-header'>
+    <h4>Passengers Details...</h4>
+    <button data-action="passenger#add" class='passenger-button'><ion-icon name="add-outline"></ion-icon></button>
+  </div>
   <%= form_with(model: @booking, local: true) do |form| %>
     <%= form.hidden_field :flight_id, value: @flight.id %>
     <div data-passenger-target="formContainer" class='passenger-form-container'>
@@ -17,7 +18,7 @@
             <div class='input-container'>
               <%= passengers_form.text_field :email, class: 'passenger-input', placeholder: 'Passenger Email' %>
             </div>
-            <button data-action="passenger#remove">X</button>
+            <button data-action="passenger#remove" class='passenger-button'><ion-icon name="close-outline"></ion-icon></button>
           </div>
         <% end %>
     </div>
@@ -29,7 +30,7 @@
         <div class="input-container">
           <input class="passenger-input" placeholder="Passenger Email" type="text" name="booking[passengers_attributes][0][email]" id="booking_passengers_attributes_0_email">
         </div>
-        <button data-action="passenger#remove">X</button>
+        <button data-action="passenger#remove" class='passenger-button'><ion-icon name="close-outline"></ion-icon></button>
       </div>
     </template>
     <div id='confirmation-buttons'>

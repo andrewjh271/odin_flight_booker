@@ -20,7 +20,7 @@ $ticket-border: 1px dashed #b3b3b3;
 
 .passenger-form-fields {
   display: flex;
-  margin: 13px;
+  margin: 13px 2px 13px 2px;
 }
 
 .input-container {
@@ -50,6 +50,45 @@ $ticket-border: 1px dashed #b3b3b3;
 .no-right-border  {
   border-right: none !important;
 }
+
+.passenger-form-header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: $booking-width-large;
+  min-width: 522px;
+  padding: 15px 0 15px 0;
+  margin: auto;
+}
+
+.passenger-form-header h4 {
+  margin: 0;
+  width: auto;
+}
+
+// adding or removing passengers
+
+.passenger-button {
+  border: none;
+  background: none;
+  padding-right: 0;
+}
+
+.passenger-button:hover {
+  cursor: pointer;
+}
+
+.passenger-button ion-icon {
+  color: black;
+  transform: none;
+}
+
+.passenger-button:hover ion-icon {
+  color: $booking-blue;
+  transition: 500ms;
+}
+
 // confirming or cancelling
 
 #confirmation-buttons {
@@ -333,6 +372,7 @@ a#cancel-booking {
 
 @media (max-width: 900px) {
   .passenger-form-container,
+  .passenger-form-header,
   #confirmation-buttons {
     width: $booking-width-small;
   }
