@@ -14,12 +14,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.passengers.build if @booking.passengers.empty?
     if @booking.save
       flash.notice = "Flight #{@booking.flight.formatted_flight_number} successfully booked! A confirmation email has been sent to each passenger."
       PassengerMailer.with(booking: @booking).thank_you.deliver_now
       redirect_to booking_path(@booking.confirmation)
     else
-      flash.now[:alert] = ''
+      flash.now[:alert] ||= ''
       if @booking.errors[:'passengers.name'].include?("can't be blank") ||
          @booking.errors[:'passengers.email'].include?("can't be blank")   
         flash.now[:alert] << 'The highlighted fields cannot be left blank. '

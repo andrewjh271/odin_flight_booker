@@ -13,7 +13,7 @@ class Booking < ApplicationRecord
   has_many :passenger_bookings, dependent: :delete_all
   has_many :passengers, through: :passenger_bookings, inverse_of: :bookings
 
-  accepts_nested_attributes_for :passengers
+  accepts_nested_attributes_for :passengers, reject_if: :all_blank
 
   before_validation :find_or_create_passenger
   before_save :ensure_confirmation
