@@ -89,6 +89,14 @@ $ticket-border: 1px dashed #b3b3b3;
   transition: 500ms;
 }
 
+.not-allowed:hover {
+  cursor: not-allowed;
+  
+  ion-icon {
+    color: black;
+  }
+}
+
 // confirming or cancelling
 
 #confirmation-buttons {

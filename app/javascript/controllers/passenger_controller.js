@@ -35,5 +35,13 @@ export default class extends Controller {
       let button = field.children[2];
       button.dataset.passengerIndexParam = index;
     })
+    let button = this.formFieldTarget.children[2];
+    if (this.formFieldTargets.length == 1) {
+      button.classList.add('not-allowed');
+      button.disabled = true;
+    } else {
+      button.classList.remove('not-allowed');
+      button.disabled = false;
+    }
   }
 }
